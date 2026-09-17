@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  web:
+    # Build the Next.js app using a multi‑stage Dockerfile (see Dockerfile in repo root)
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # In production the app runs on port 3000 (Next.js default)
+    ports:
+      - "3000:3000"
+    # Environment variables – can be overridden with a .env file
+    env_file: .env
+    environment:
+      NODE_ENV: production
+    # Run the compiled Next.js server
+    command: ["npm", "run", "start"]
+    # Optional – mount source for local debugging (comment out in prod)
+    # volumes:
+    #   - .:/app:cached
+
+# Optional database service if the site needs one (e.g., PostgreSQL)
+#  db:
+#    image: postgres:16-alpine
+#    environment:
+#      POSTGRES_USER: user
+#      POSTGRES_PASSWORD: password
+#      POSTGRES_DB: portfolio
+#    ports:
+#      - "5432:5432"
