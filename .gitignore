@@ -1,0 +1,8 @@
+/graphify-out 
+.next 
+.claude
+/node_modules 
+package-lock.json
+tsconfig.json
+next-env.d.ts
+CLAUDE.md   
